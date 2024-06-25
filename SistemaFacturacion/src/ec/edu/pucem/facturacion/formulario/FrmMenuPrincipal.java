@@ -83,7 +83,9 @@ public class FrmMenuPrincipal extends JFrame {
         JMenuItem FrmFacebook = new JMenuItem("Facebook");
         FrmFacebook.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+            	FrmFacebook frmFacebook = new FrmFacebook();
+            	desktopPane.add(frmFacebook);
+            	frmFacebook.setVisible(true);
             }
         });
         FrmFacebook.setFont(new Font("Segoe UI", Font.BOLD, 16));

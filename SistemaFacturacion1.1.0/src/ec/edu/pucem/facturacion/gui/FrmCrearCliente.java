@@ -1,9 +1,11 @@
-package ec.edu.pucem.facturacion.formulario;
+package ec.edu.pucem.facturacion.gui;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import ec.edu.pucem.facturacion.models.Cliente;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -11,6 +13,9 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import javax.swing.*;
+
 
 public class FrmCrearCliente extends JInternalFrame {
 
@@ -21,13 +26,13 @@ public class FrmCrearCliente extends JInternalFrame {
     private JTextField txtTelefono;
     private JTextField txtEmail;
     private JTextField txtDireccion;
-    private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     private JButton btnGuardar;
     private JTable table;
     private DefaultTableModel model;
 
     public FrmCrearCliente() {
-        setTitle("Clientes");
+        setTitle("Crear nuevo cliente");
         setBounds(100, 100, 450, 500);
         getContentPane().setLayout(null);
 
@@ -135,6 +140,14 @@ public class FrmCrearCliente extends JInternalFrame {
     }
 
     private void GuardarCliente() {
+    	
+        // Validación de que todos los campos estén llenos
+        if (txtCedula.getText().isEmpty() || txtNombres.getText().isEmpty() || txtApellidos.getText().isEmpty() ||
+            txtTelefono.getText().isEmpty() || txtEmail.getText().isEmpty() || txtDireccion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Campos incompletos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         Cliente cliente = new Cliente();
         cliente.setCedula(txtCedula.getText());
         cliente.setNombre(txtNombres.getText());
@@ -154,5 +167,6 @@ public class FrmCrearCliente extends JInternalFrame {
                 cliente.getDireccion()
         });
 
+        Limpiar(); // Limpiar los campos después de guardar
     }
 }
