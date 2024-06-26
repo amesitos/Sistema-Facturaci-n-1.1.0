@@ -27,6 +27,7 @@ public class FrmMenuPrincipal extends JFrame {
     private FrmCrearProducto frmCrearProducto;
     private FrmListaCliente frmListaCliente;
     private FrmListaProductos frmListaProductos;
+    private FrmFactura frmFactura;
 
     public FrmMenuPrincipal() {
         setTitle("Sistema de Facturación Electrónica");
@@ -155,17 +156,19 @@ public class FrmMenuPrincipal extends JFrame {
         // Menú subítem "Facturar" del menú "Facturar" 
         JMenuItem menuItmFacturar = new JMenuItem("Facturar");
         menuItmFacturar.addActionListener(new ActionListener() {
+        	
             public void actionPerformed(ActionEvent e) {
-                FrmFactura frmFactura = new FrmFactura();
-                desktopPane.add(frmFactura);
-                frmFactura.setVisible(true);
-                
+            	if (frmFactura == null || frmFactura.isClosed()) { // Si el formulario de "Nuevo producto" no existe, crear uno
+                    frmFactura = new FrmFactura(); // y agregarlo al desktopPane.
+                    desktopPane.add(frmFactura);
+                    frmFactura.setVisible(true);
+                   
              // Bloque de código para centrar el formulario "Facturar"
                 Dimension desktopSize = desktopPane.getSize();
                 Dimension frameSize = frmFactura.getSize();
                 frmFactura.setLocation((desktopSize.width - frameSize.width) / 2,
-                                       (desktopSize.height - frameSize.height) / 2);
-            }
+            	                       (desktopSize.height - frameSize.height) / 2);
+            }}
         });
         menuItmFacturar.setFont(new Font("Segoe UI", Font.BOLD, 16));
         menuItmFacturar.setIcon(null);

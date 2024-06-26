@@ -124,7 +124,7 @@ public class FrmCrearCliente extends JInternalFrame {
         table = new JTable();
         model = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"Cédula", "Nombres", "Apellidos", "Teléfono", "Email", "Dirección"}
+                new String[]{"Cédula", "Nombres", "Apellidos", "Teléfono", "Dirección", "Email"}
         );
         table.setModel(model);
         scrollPane.setViewportView(table);

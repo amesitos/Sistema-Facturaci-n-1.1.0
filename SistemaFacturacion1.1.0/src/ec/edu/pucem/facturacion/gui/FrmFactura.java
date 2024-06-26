@@ -66,7 +66,7 @@ public class FrmFactura extends JInternalFrame implements ProductoSeleccionadoLi
         getContentPane().add(txtCedula);
 
         // Texto "Email"
-        JLabel lblDireccion = new JLabel("Dirección:");
+        JLabel lblDireccion = new JLabel("Email:");
         lblDireccion.setFont(new Font("Tahoma", Font.BOLD, 10));
         lblDireccion.setBounds(28, 93, 72, 20);
         getContentPane().add(lblDireccion);
@@ -88,7 +88,7 @@ public class FrmFactura extends JInternalFrame implements ProductoSeleccionadoLi
         getContentPane().add(txtTelefono);
         
         // Texto "Email"
-        JLabel lblEmail = new JLabel("Email:");
+        JLabel lblEmail = new JLabel("Dirección:");
         lblEmail.setFont(new Font("Tahoma", Font.BOLD, 10));
         lblEmail.setBounds(28, 155, 72, 13);
         getContentPane().add(lblEmail);

@@ -10,9 +10,7 @@ public class Producto {
     private double totalIva;
     private double total;
 
-    public Producto() {
-        
-    }
+    public Producto() {}
 
     // Getters y setters para producto
     public int getCodigo() {
@@ -47,6 +45,7 @@ public class Producto {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+        calcularTotal(); // Recalcula el total cuando se establece la cantidad
     }
 
     public double getIva() {
@@ -69,11 +68,17 @@ public class Producto {
 
     // Función para calcular el total del iva del producto
     private void calcularTotalIva() {
-        this.totalIva = this.precio * this.iva;
+        this.totalIva = round(this.precio * this.iva, 2);
     }
 
     // Función para calcular el total del producto
     private void calcularTotal() {
-        this.total = (this.precio + this.totalIva) * this.cantidad;
+        this.total = round((this.precio + this.totalIva) * this.cantidad, 2);
+    }
+
+    // Método para redondear un valor a un número específico de decimales
+    private double round(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
     }
 }
